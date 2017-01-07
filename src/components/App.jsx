@@ -21,22 +21,27 @@ class App extends React.Component {
     this.state = {
       video: exampleVideoData[0],
       videos: exampleVideoData,
-      onClickHandle: this.onClickHandle
+      searchYouTube: true 
     };
 
   }
 
+  searchYouTube(searchYouTubeStub) {
+    this.setState({
+      searchYouTube: true
+    });
+  }
+
   onClickHandle(video) {
     this.setState({
-      video: exampleVideoData[0],
-      videos: exampleVideoData
+      video: video
     });
   }
 
   render() {
     return (
       <div>
-        <Nav />
+        <Nav searchYouTube={this.props.searchYouTube}/>
           <div className="col-md-7">
             <VideoPlayer video={this.state.video}/>
           </div>
