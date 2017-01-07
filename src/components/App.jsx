@@ -21,15 +21,13 @@ class App extends React.Component {
     this.state = {
       video: exampleVideoData[0],
       videos: exampleVideoData,
-      onClickHandle: this.onClickHandle
     };
 
   }
 
   onClickHandle(video) {
     this.setState({
-      video: exampleVideoData[0],
-      videos: exampleVideoData
+      video: video
     });
   }
 
