@@ -1,14 +1,7 @@
-var VideoList = () => (
+var VideoList = ({videos}) => (
   <div className="video-list media">
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
-    <VideoListEntry />
+    {videos.map(video =>
+    <VideoListEntry video={video}/>)}
   </div>
 );
 
