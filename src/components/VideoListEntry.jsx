@@ -1,4 +1,4 @@
-var VideoListEntry = ({video,onClickHandle}) => (
+var VideoListEntry = ({video, onClickHandle}) => (
   <div className="video-list-entry">
     <div className="media-left media-middle">
       <img className="media-object" src={video.snippet.thumbnails.default.url} alt="" />
