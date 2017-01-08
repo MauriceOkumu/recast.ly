@@ -11,17 +11,17 @@
 // `var` declarations will only exist globally where explicitly defined
 
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
+ /* class Search extends React.Component {
+ //constructor(props) {
+    //super(props);
 
-    this.state = {
-      value: null
+  //  this.state = {
+      value: ''
     };
   }
   
-  onSearch(event) {
-    this.onSearch(event.target.value);
+  handleInput(event) {
+    this.handleInputVideo(event.target.value);
     this.setState({
       value: event.target.value
     });
@@ -30,14 +30,47 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-bar form-inline">
-        <input className="form-control" type="text" value={this.state.value} onChange={this.onSearch.bind(this)}/>
+        <input className="form-control" type="text" value={this.state.value} onChange={this.handleInput.bind(this)}/>
           <button className="btn hidden-sm-down">
           <span className="glyphicon glyphicon-search"></span>
-        </button>
+        </button >
       </div> 
     );
   }
+}*/
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: ''
+    };
+  }
+
+  handleInputVideo(e) {
+    this.props.handleInputVideo(e.target.value);
+    this.setState({
+      value: e.target.value
+    });
+  }
+
+  render() {
+    return (
+      <div className="search-bar form-inline">
+        <input
+          className="form-control"
+          type="text"
+          value={this.state.value}
+          onChange={this.handleInputVideo.bind(this)}
+        />
+        <button className="btn hidden-sm-down">
+          <span className="glyphicon glyphicon-search"></span>
+        </button>
+      </div>
+    );
+  }
 }
+
 
 window.Search = Search;
 

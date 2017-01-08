@@ -1,17 +1,3 @@
-// var App = () => (
-//  <div>
-//    <Nav />
-//    <div className="col-md-7">
-//      <VideoPlayer />
-//    </div>
-//    <div className="col-md-5">
-//      <VideoList/>
-//    </div>
-//  </div>
-// );
-
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
 
 
 class App extends React.Component {
@@ -20,43 +6,49 @@ class App extends React.Component {
 
     this.state = {
 
-      video: null,
       videos: [],      
+      video: null,
     };
 
   }
-       
+
 
 
   componentDidMount() {
-    this.searchYouTube('react');
+    this.getVideos('react tutorials');
   }
 
-  searchYouTube(query) {
+  getVideos(query) {
     var options = {
-      key: this.props.YOUTUBE_API_KEY,
+      key: this.props.API_KEY,
       query: query
     };
+    this.props.searchYouTube(options, (videos) =>
+      this.setState({
+        videos: videos,
+        video: videos[0]
+      })
+    );
   }     
 
 
   onClickHandle(video) {
     this.setState({
-      video: videos[0]
+      video: video
     });
   }
 
   render() {
     return (
       <div>
-        <Nav onClickHandle={this.props.searchYouTube.bind(this)}/>
-          <div className="col-md-7">
-            <VideoPlayer video={this.state.video}/>
-          </div>
-      <div className="col-md-5">
-        <VideoList onClickHandle={this.onClickHandle.bind(this)} videos={this.state.videos}/>
+        <Nav handleInputVideo={this.getVideos.bind(this)}/>
+        <div className="col-md-7">
+          <VideoPlayer video={this.state.video}/>
+        </div>
+        <div className="col-md-5">
+          <VideoList onClickHandle={this.onClickHandle.bind(this)} videos={this.state.videos}/>
+        </div>
       </div>
-     </div>
     );
   }
 }
