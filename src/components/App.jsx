@@ -19,30 +19,37 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      video: exampleVideoData[0],
-      videos: exampleVideoData,
-      searchYouTube: true 
 
+      video: null,
+      videos: [],      
     };
 
   }
+       
 
-  searchYouTube(searchYouTubeStub) {
-    this.setState({
-      searchYouTube: true
-    });
+
+  componentDidMount() {
+    this.searchYouTube('react');
   }
+
+  searchYouTube(query) {
+    var options = {
+      key: this.props.YOUTUBE_API_KEY,
+      query: query
+    };
+  }     
+
 
   onClickHandle(video) {
     this.setState({
-      video: video
+      video: videos[0]
     });
   }
 
   render() {
     return (
       <div>
-        <Nav searchYouTube={this.props.searchYouTube}/>
+        <Nav onClickHandle={this.props.searchYouTube.bind(this)}/>
           <div className="col-md-7">
             <VideoPlayer video={this.state.video}/>
           </div>
