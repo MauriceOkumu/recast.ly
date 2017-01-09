@@ -1,7 +1,7 @@
-var Nav = ({handleInputVideo}) => (
+var Nav = ({handleSearch}) => (
   <nav className="navbar">
     <div className="col-md-6 col-md-offset-3">
-      <Search handleInputVideo={handleInputVideo}/>
+      <Search handleSearch={handleSearch}/>
     </div>
   </nav>
 );
